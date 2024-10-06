@@ -1,9 +1,10 @@
 import logging
 import time
+import os
 import scrapy
 from scrapy_selenium import SeleniumRequest
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException 
+from selenium.common.exceptions import NoSuchElementException
 from lap_top_scrapy.utils.create_url import main_url_create
 
 logger = logging.getLogger()
@@ -15,10 +16,9 @@ class QuotesSpider(scrapy.Spider):
     def start_requests(self):
         time.sleep(3)
         # путь передаю так, можно и через .env
-        start_url, dict_config = main_url_create(
-            r"C:\DEV_python\PARSING\lap_top_scrapy\config.xlsx"
-        )
+        start_url, dict_config = main_url_create()
         logger.info(start_url)
+        
         yield SeleniumRequest(
             url=start_url,
             wait_time=10,
@@ -106,7 +106,9 @@ class QuotesSpider(scrapy.Spider):
             )
             # берем два самых последних с минимальной оценкой, по индексу из общего массива
             reviews = []
-            for number in range(len(review_count) - 1, max(len(review_count) - 3, -1), -1):
+            for number in range(
+                len(review_count) - 1, max(len(review_count) - 3, -1), -1
+            ):
                 review = review_count[number].text
                 reviews.append(f"отзыв {number} - {review.replace("\n", " ")}")
                 logger.info(review)

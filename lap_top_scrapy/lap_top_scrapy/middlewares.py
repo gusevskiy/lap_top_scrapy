@@ -3,14 +3,16 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
 from scrapy import signals
 import random
-
+from pathlib import Path
 # для Middlewere selenium
 from scrapy_selenium import SeleniumMiddleware
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver import Firefox
+from scrapy.utils.project import get_project_settings
 
 
 # useful for handling different item types with a single interface
@@ -171,7 +173,9 @@ class CustomSeleniumMiddleware(SeleniumMiddleware):
         *args,
         **kwargs,
     ):
-        geckodriver_path = r"C:\DEV_python\PARSING\lap_top_scrapy\lap_top_scrapy\lap_top_scrapy\utils\geckodriver.exe"
+        settings = get_project_settings()
+        geckodriver_path = settings.get("GECKODRIVER_PATH")
+
         firefox_options = Options()
         firefox_options.headless = True
         

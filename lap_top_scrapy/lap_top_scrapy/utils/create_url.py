@@ -1,9 +1,16 @@
-'''параметры для поиска ноутбуков по заданым параметрам'''
+"""параметры для поиска ноутбуков по заданым параметрам"""
+
+from pathlib import Path
 from openpyxl import load_workbook
+from scrapy.utils.project import get_project_settings
 
 
-def main_url_create(path_config):
+def main_url_create():
     """Формирует main_url по данным из config.xlsx"""
+    settings = get_project_settings()
+    
+    path_config = settings.get("CONFIGFILE_PATH")
+
     wb = load_workbook(path_config)
     sheet = wb.active
     # читаем только ячейки с нужными данными
@@ -76,4 +83,4 @@ def main_url_create(path_config):
 
 
 if __name__ == "__main__":
-    print(main_url_create(r"C:\DEV_python\PARSING\lap_top_scrapy\config.xlsx"))
+    print(main_url_create())

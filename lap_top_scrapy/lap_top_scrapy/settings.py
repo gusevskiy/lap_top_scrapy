@@ -1,5 +1,6 @@
 from shutil import which
 from datetime import datetime
+from pathlib import Path
 # Scrapy settings for lap_top_scrapy project
 #
 # For simplicity, this file contains only settings considered important or
@@ -8,6 +9,8 @@ from datetime import datetime
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+
+PROJECT_ROOT = Path(__file__).resolve().parent
 
 BOT_NAME = "lap_top_scrapy"
 
@@ -89,6 +92,10 @@ REQUEST_PER_PROXY = 2
 SELENIUM_DRIVER_NAME = 'firefox'
 SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
 SELENIUM_DRIVER_ARGUMENTS = ['--headless']
+
+GECKODRIVER_PATH = PROJECT_ROOT / "utils" / "geckodriver.exe"
+
+CONFIGFILE_PATH = PROJECT_ROOT / "utils" / "config.xlsx"
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
