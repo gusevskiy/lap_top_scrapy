@@ -1,0 +1,39 @@
+https://market.yandex.ru/catalog--noutbuki/26895412/list
+?hid=91013
+&how= key                                        # {["подешевле"]="aprice", ["подороже"]="dprice", ["высокий рейтинг"]="rating"};
+&rs=eJwFwTEOwjAMAMB4AIVKSBkrGMjIFtuqXGdlZEJ8ADmtMzHCE3gb_-EF3PH-Bj-IMYwhf76by2k4DjFCyiNkSNvDbvVu7-frQTmcQ4Jr5Ilrlz7dmWYWpSpVRaSQN2cysk5Lm5sj-tJMTZUZBbFQoT-o5Rfh
+&glfilter=21194330%3A36779198                      # ноутбук
+&glfilter=37331890 %3A key           # процессор  
+ 
+ {["amd"]="50198831%2C50198796%2C50198830%2C50198806%2C53327653%2C50198854%2C53327625%2C53327674%2C53327627%2C53327684%2C50198838%2C50198858%2C50198832%2C50198810%2C53327636%2C50198848%2C53327662%2C53327685", ["intel"]="50198855%2C50198821%2C50198840%2C50198812%2C50198785%2C50198782%2C53327620%2C50198857%2C53327651%2C53790795%2C53766350%2C53327638%2C50198862%2C50198798%2C53327673%2C53327687%2C50198807%2C54381314%2C54709156%2C54646910"}
+
+&glfilter=24892510 %3A key                         # RAM {["8"]="24892650", ["12"]="24892692",["16"]:"24892630"}
+&glfilter=37699290 %3A key                         # жесткий диск {["256"]="39025878", ["512"]="39025848", ["1"]="39025873"}
+&glfilter=23674510 %3A key                         # Вес 1~3
+&glfilter=24083873 %3A key                         # Время работы 6~10
+&resale_goods=resale_new                           # новый
+&qrfrom=4                                          # высокий рейтинг
+
+
+
+
+
+
+https://market.yandex.ru/catalog--noutbuki/26895412/list?hid=91013&how={dict_sort["key"]}&glfilter=21194330%3A36779198&glfilter=37331890%3A{dict_proc["key]}&glfilter=24892510%3A{dict_RAM["RAM"]}&glfilter=37699290%3A{dict_hard_disk["hard_disk"]}&glfilter=23674510%3A{вес}&glfilter=24083873%3A{время работы}&resale_goods=resale_new&qrfrom=4
+
+
+battery_life
+sort
+RAM
+processor
+battery_life
+hard_disk
+weight
+
+dict_hard_disk
+dict_processor
+dict_RAM
+dict_sort
+
+
+$"https://market.yandex.ru/catalog--noutbuki/26895412/list?hid=91013&how={dict_sort[sort]}&glfilter=21194330%3A36779198&glfilter=37331890%3A{dict_processor[processor]}&glfilter=24892510%3A{dict_RAM[RAM.ToString()]}&glfilter=37699290%3A{dict_hard_disk[hard_disk.ToString()]}&glfilter=23674510%3A{weight.ToString()}&glfilter=24083873%3A{battery_life.ToString()}&resale_goods=resale_new&qrfrom=4"
