@@ -2,14 +2,14 @@
 
 from openpyxl import load_workbook
 from scrapy.utils.project import get_project_settings
+
 settings = get_project_settings()
 
 
 def main_url_create():
     """Формирует main_url по данным из config.xlsx"""
-    
+
     path_config = settings.get("CONFIGFILE_PATH")
-    print(path_config)
     wb = load_workbook(path_config)
     sheet = wb.active
     # читаем только ячейки с нужными данными

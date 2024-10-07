@@ -9,8 +9,6 @@ mkdir lap_top_scrapy
 
 py -3.12 -m venv venv
 
-python -m venv venv
-
 git clone https://github.com/gusevskiy/lap_top_scrapy.git
 
 ./venv/Scripts/activate
@@ -35,8 +33,10 @@ PROXY_LIST = [
 ### Запуск
 ```bash
 cd lap_top_scrapy
+
 scrapy crawl lap_top -O lap_top.json
 ```
+ 
 * в файле `lap_top.json` будут данные в формате ключ: значение (модель ноутбука: два отзова)
 * Ведется логирование каждого запуска в отдельном файле `logs`
 
