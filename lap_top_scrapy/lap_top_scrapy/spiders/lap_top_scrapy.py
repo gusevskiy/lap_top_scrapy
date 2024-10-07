@@ -1,10 +1,12 @@
 import logging
-import time
 import os
+import time
+
 import scrapy
 from scrapy_selenium import SeleniumRequest
-from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+
 from lap_top_scrapy.utils.create_url import main_url_create
 
 logger = logging.getLogger()
@@ -18,7 +20,7 @@ class QuotesSpider(scrapy.Spider):
         # путь передаю так, можно и через .env
         start_url, dict_config = main_url_create()
         logger.info(start_url)
-        
+
         yield SeleniumRequest(
             url=start_url,
             wait_time=10,
@@ -52,13 +54,15 @@ class QuotesSpider(scrapy.Spider):
             if flag_count_elements >= count_element:
                 break
 
+            # ссылка для перехода к элементу
+            href = (
+                f"https://market.yandex.ru/{element.xpath('./div/div/a/@href').get()}"
+            )
+
             # если оценки нет или она < 10 то пропускаем этот элемент, скорее всего это из за рубежа и там еще нет отзывов
             if score is not None and int(score.split()[2]) > reviews:
                 # прибавляем счетчик обработанных объявлений
                 flag_count_elements += 1
-
-                # ссылка для перехода к элементу
-                href = f"https://market.yandex.ru/{element.xpath('./div/div/a/@href').get()}"
 
                 # перешли к элементу
                 driver.get(href)
@@ -109,7 +113,7 @@ class QuotesSpider(scrapy.Spider):
             for number in range(
                 len(review_count) - 1, max(len(review_count) - 3, -1), -1
             ):
-                review = review_count[number].text.replace('\n', ' ')
+                review = review_count[number].text.replace("\n", " ")
                 reviews.append(f"отзыв {number} - {review}")
                 logger.info(review)
 
