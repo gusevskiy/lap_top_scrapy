@@ -21,6 +21,8 @@ NEWSPIDER_MODULE = "lap_top_scrapy.spiders"
 LOG_LEVEL = (
     "INFO"  # если поставить DEBUG то в логи прилетает весь контент и Scrapy вылетает
 )
+log_dir = Path("lap_top_scrapy") / "logs"
+log_dir.mkdir(parents=True, exist_ok=True)
 LOG_FILE = (
     f"lap_top_scrapy\\logs\\log_{datetime.now().strftime('%Y-%m-%d %H-%M-%S')}.log"
 )
@@ -94,8 +96,8 @@ SELENIUM_DRIVER_EXECUTABLE_PATH = which('geckodriver')
 SELENIUM_DRIVER_ARGUMENTS = ['--headless']
 
 GECKODRIVER_PATH = PROJECT_ROOT / "utils" / "geckodriver.exe"
-
-CONFIGFILE_PATH = PROJECT_ROOT / "utils" / "config.xlsx"
+# поднимемся выше относительно файла settings.py
+CONFIGFILE_PATH = PROJECT_ROOT.parent.parent / "config.xlsx"
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html

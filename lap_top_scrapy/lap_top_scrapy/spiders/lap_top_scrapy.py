@@ -109,8 +109,8 @@ class QuotesSpider(scrapy.Spider):
             for number in range(
                 len(review_count) - 1, max(len(review_count) - 3, -1), -1
             ):
-                review = review_count[number].text
-                reviews.append(f"отзыв {number} - {review.replace("\n", " ")}")
+                review = review_count[number].text.replace('\n', ' ')
+                reviews.append(f"отзыв {number} - {review}")
                 logger.info(review)
 
             time.sleep(2)
